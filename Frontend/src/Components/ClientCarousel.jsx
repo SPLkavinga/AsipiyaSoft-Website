@@ -1,4 +1,4 @@
-import React from "react";
+
 import { motion } from "framer-motion";
 
 // Import your images
@@ -13,7 +13,7 @@ import logo8 from "../assets/ClientLogo/ClientLogo8.jpg";
 import logo9 from "../assets/ClientLogo/ClientLogo9.jpg";
 import logo10 from "../assets/ClientLogo/ClientLogo10.jpg";
 import logo11 from "../assets/ClientLogo/ClientLogo11.jpg";
-import logo12 from "../assets/ClientLogo/ClientLogo1.jpg";
+
 
 // Array of logos
 const logos = [logo1, logo2, logo3, logo4, logo5, logo6 , logo7, logo8, logo9, logo10 , logo11];
