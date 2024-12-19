@@ -8,7 +8,10 @@ import img1 from "../assets/img1.png";
 import img2 from "../assets/bro.png";
 import img3 from "../assets/rafiki.png";
 import img4 from "../assets/Group 201.png";
+import img5 from "../assets/amico.png";
 import backgroundImg from "../assets/background.png";
+import frame from "../assets/Frame 4.png";
+import WhyChooseUs from "./../Components/WhyChooseUs";
 import LogoRow from "../Components/LogoRow";
 import ClientCarousel from "../Components/ClientCarousel";
 import Cooperate from "../Components/Cooperate";
@@ -19,7 +22,9 @@ import pawningImage from "../assets/SystemIcons/Icon2.png";
 import microfinanceImage from "../assets/SystemIcons/Icon1.png";
 import goldLoanImage from "../assets/SystemIcons/Icon4.png";
 import leasingImage from "../assets/SystemIcons/Icon3.png";
-
+import realEstateImage from "../assets/SystemIcons/Icon7.png";
+import socialMediaImage from "../assets/SystemIcons/Icon8.png";
+import printingImage from "../assets/SystemIcons/Icon9.png";
 
 function Home() {
   const textVariants = {
@@ -247,7 +252,7 @@ function Home() {
         <div className="px-[20px] mx-auto max-w-7xl sm:px-6 lg:px-8">
           {/* Features Grid */}
           <motion.div
-            className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center"
+            className="grid justify-center grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -436,4 +441,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Home;
