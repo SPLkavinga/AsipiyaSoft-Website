@@ -42,7 +42,7 @@ function ClientCarousel() {
             <img
               src={logo}
               alt={`Logo ${index}`}
-              className="object-contain w-auto h-16 md:h-24 xl:h-28 "
+              className="object-contain w-auto h-16 md:h-24 xl:h-28 rounded-3xl "
             />
           </div>
         ))}
