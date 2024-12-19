@@ -297,29 +297,29 @@ function Contact() {
             </p>
 
             <div className="flex flex-col space-y-2">
-              <Link
-                to="/facebook"
+              <a
+                href="https://www.facebook.com/AsipiyaSoftSolutions?mibextid=ZbWKwL"
                 className="flex items-center space-x-2 text-sm text-purple-600"
               >
                 <AiOutlineFacebook className="w-5 h-5" />
                 <span>Facebook</span>
-              </Link>
+              </a>
 
-              <Link
-                to="/instagram"
+              <a
+                href="https://www.instagram.com/asipiyasoftsolutions/"
                 className="flex items-center space-x-2 text-sm text-purple-600"
               >
                 <AiOutlineInstagram className="w-5 h-5" />
                 <span>Instagram</span>
-              </Link>
+              </a>
 
-              <Link
-                to="/linkedin"
+              <a
+                href="https://www.linkedin.com/company/asipiya/"
                 className="flex items-center space-x-2 text-sm text-purple-600"
               >
                 <AiOutlineLinkedin className="w-5 h-5" />
                 <span>LinkedIn</span>
-              </Link>
+              </a>
             </div>
           </div>
         </motion.div>

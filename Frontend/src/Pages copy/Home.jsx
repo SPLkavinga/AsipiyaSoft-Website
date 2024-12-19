@@ -294,7 +294,7 @@ function Home() {
       </motion.div>
 
       {/* Micro Finance section */}
-      <div className="mx-[20px] md:mx-[20px] lg:mx-[120px] flex flex-col items-center justify-center  xl:flex-row-reverse mt-[40px] md:mt-[80px]">
+      <div className="mx-[20px] md:mx-[20px] lg:mx-[120px] flex flex-col items-center justify-center  xl:flex-row-reverse mt-[40px] md:mt-[120px]">
         {/* Image Section */}
         <motion.div
           className="w-[250px] h-[150px] md:w-[400px] md:h-[250px] xl:w-[500px] xl:h-[366.59px] mb-4 xl:mb-0  flex justify-center md:justify-start "
