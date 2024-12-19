@@ -290,8 +290,9 @@ function AboutUs() {
         </div>
       </div>
 
-      {/* Leadership Section */}
-      <Leadership />
+
+      {/* Leadership Section <Leadership />*/}
+      
 
       {/* Cooperate Section */}
       <Cooperate />
