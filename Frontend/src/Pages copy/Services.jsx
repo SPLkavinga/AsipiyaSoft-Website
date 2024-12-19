@@ -47,7 +47,7 @@ const services = [
     id: "Invoice System",
     title: "Invoice System",
     image: invoicelogo,
-    link: "/ERP",
+    link: "/Invoice",
     description:
       "Streamline your billing process with our state-of-the-art invoice system services. Whether you're generating invoices, tracking payments, or managing taxes, our customized solutions ensure accuracy and efficiency. With features like automated recurring invoices and real-time reporting, we simplify your financial operations for maximum productivity.",
   },
