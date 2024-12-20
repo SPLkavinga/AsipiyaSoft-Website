@@ -21,6 +21,9 @@ import InternBusinessAnalyst from './Pages copy/InternBusinessAnalyst';
 import BlogList from './Pages copy/Blog/BlogList';
 import BlogPage from './Pages copy/Blog/BlogPage';
 import InvoiceSystem from './Pages copy/InvoiceSystem';
+import AddCareers from './Admin/AddCareers';
+import ShowCareer from './Admin/ShowCareer';
+import Admin from './Admin/Admin';
 
 function App() {
   return (
@@ -48,6 +51,9 @@ function App() {
       <Route path='/ERP' element={<ERP/>}/>
       <Route path="/Blogs" element={<BlogList />} />
     <Route path="/Blog/:slug" element={<BlogPage />} />
+    <Route path="/Admin" element={<Admin />} />
+    <Route path="/AddCareers" element={<AddCareers />} />
+    <Route path="/ShowCareer" element={<ShowCareer />} />
     </Routes>
     </BrowserRouter>
   );
