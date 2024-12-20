@@ -14,7 +14,7 @@ import pawningImage from "../assets/SystemIcons/Icon2.png";
 import microfinanceImage from "../assets/SystemIcons/Icon1.png";
 import goldLoanImage from "../assets/SystemIcons/Icon4.png";
 import leasingImage from "../assets/SystemIcons/Icon3.png";
-import realEstateImage from "../assets/SystemIcons/Icon7.png";
+import invoicelogo from "../assets/SystemIcons/Icon6.png";
 import socialMediaImage from "../assets/SystemIcons/Icon8.png";
 import printingImage from "../assets/SystemIcons/Icon9.png";
 
@@ -25,7 +25,7 @@ const services = [
     image: erpImage,
     link: "/ERP",
     description:
-      "Unleash the full potential of your online presence with our expert web development services. Whether you need a responsive website, an e-commerce platform, or a custom web application, our skilled team is dedicated to bringing your vision to life.",
+      "Maximize your business efficiency with our robust ERP system development services. From streamlining processes to integrating departments, our team ensures your enterprise runs like a well-oiled machine. Whether you need modules for finance, HR, inventory, or operations, we customize solutions that align perfectly with your organizational needs.",
   },
   {
     id: "pos",
@@ -33,7 +33,7 @@ const services = [
     image: pawningImage,
     link: "/Prawing",
     description:
-      "Unleash the full potential of your online presence with our expert web development services. Whether you need a responsive website, an e-commerce platform, or a custom web application, our skilled team is dedicated to bringing your vision to life.",
+      "Simplify your pawnshop operations with our advanced pawning system solutions. Our team creates user-friendly platforms that manage inventory, track loans, and ensure compliance with ease. With features like automated reminders, valuation calculators, and secure transaction handling, we empower you to deliver excellent service to your customers.",
   },
   {
     id: "micro-finance",
@@ -41,15 +41,15 @@ const services = [
     image: microfinanceImage,
     link: "/Microfinance",
     description:
-      "Unleash the full potential of your online presence with our expert web development services. Whether you need a responsive website, an e-commerce platform, or a custom web application, our skilled team is dedicated to bringing your vision to life.",
+      "Empower communities with our expertly crafted microfinance system solutions. From loan management to customer onboarding and financial reporting, our solutions are tailored to the unique needs of microfinance institutions. Our scalable platforms help you manage clients efficiently and drive financial inclusion with precision.",
   },
   {
-    id: "gold-loan",
-    title: "Gold Loan System",
-    image: goldLoanImage,
-    link: "/Prawing",
+    id: "Invoice System",
+    title: "Invoice System",
+    image: invoicelogo,
+    link: "/Invoice",
     description:
-      "Unleash the full potential of your online presence with our expert web development services. Whether you need a responsive website, an e-commerce platform, or a custom web application, our skilled team is dedicated to bringing your vision to life.",
+      "Streamline your billing process with our state-of-the-art invoice system services. Whether you're generating invoices, tracking payments, or managing taxes, our customized solutions ensure accuracy and efficiency. With features like automated recurring invoices and real-time reporting, we simplify your financial operations for maximum productivity.",
   },
   {
     id: "leasing",
@@ -57,32 +57,18 @@ const services = [
     image: leasingImage,
     link: "/Leasing",
     description:
-      "Unleash the full potential of your online presence with our expert web development services. Whether you need a responsive website, an e-commerce platform, or a custom web application, our skilled team is dedicated to bringing your vision to life.",
+      "Optimize your leasing business with our comprehensive leasing system development services. Our solutions are designed to manage contracts, track payments, and monitor assets seamlessly. From real-time analytics to automated workflows, we help you stay ahead in the competitive leasing market while providing exceptional customer service.",
   },
-  {
-    id: "Estate",
-    title: "Real Estate",
-    image: realEstateImage,
-    link: "/service/insurance",
-    description:
-      "Unleash the full potential of your online presence with our expert web development services. Whether you need a responsive website, an e-commerce platform, or a custom web application, our skilled team is dedicated to bringing your vision to life.",
-  },
+
   {
     id: "social-media",
     title: "Social Media Marketing",
     image: socialMediaImage,
-    link: "/service/crm",
+    link: "",
     description:
       "Enhance your brand's visibility with our comprehensive social media marketing strategies, tailored to engage and grow your audience effectively.",
   },
-  {
-    id: "printing",
-    title: "Aipiya Printing",
-    image: printingImage,
-    link: "/service/inventory",
-    description:
-      "Deliver exceptional quality with our state-of-the-art printing solutions, perfect for all your personal and professional needs.",
-  },
+  
 ];
 
 const textVariants = {

@@ -20,6 +20,7 @@ import AssociateSoftwareEngineer from './Pages copy/AssociateSoftwareEngineer';
 import InternBusinessAnalyst from './Pages copy/InternBusinessAnalyst';
 import BlogList from './Pages copy/Blog/BlogList';
 import BlogPage from './Pages copy/Blog/BlogPage';
+import InvoiceSystem from './Pages copy/InvoiceSystem';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
       <Route path='/Microfinance' element={<Microfinance/>}/>
       <Route path='/Prawing' element={<Prawing/>}/>
       <Route path='/Leasing' element={<Leasing/>}/>
+      <Route path='/Invoice' element={<InvoiceSystem/>}/>
       <Route path='/ERP' element={<ERP/>}/>
       <Route path="/Blogs" element={<BlogList />} />
     <Route path="/Blog/:slug" element={<BlogPage />} />
