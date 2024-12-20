@@ -24,6 +24,7 @@ import InvoiceSystem from './Pages copy/InvoiceSystem';
 import AddCareers from './Admin/AddCareers';
 import ShowCareer from './Admin/ShowCareer';
 import Admin from './Admin/Admin';
+import CareerNew from './Admin/CareerNew';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
     <Route path="/Admin" element={<Admin />} />
     <Route path="/AddCareers" element={<AddCareers />} />
     <Route path="/ShowCareer" element={<ShowCareer />} />
+    <Route path="/CareerNew" element={<CareerNew />} />
     </Routes>
     </BrowserRouter>
   );

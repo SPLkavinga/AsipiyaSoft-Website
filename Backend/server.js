@@ -69,6 +69,20 @@ app.post("/send-email", (req, res) => {
   });
 });
 
+// API endpoint to fetch career names to the career page
+app.get('/api/careers', (req, res) => {
+  const query = 'SELECT name FROM form_data';
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching careers:', err);
+      res.status(500).json({ error: 'Failed to fetch career data' });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+
 // Get data
 app.get("/api/data", (req, res) => {
   const query = "SELECT * FROM form_data";
