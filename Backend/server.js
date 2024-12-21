@@ -83,6 +83,22 @@ app.get('/api/careers', (req, res) => {
 });
 
 
+// Route to get vacancy details by ID for the career page
+app.get('/api/career/:id', (req, res) => {
+  const { id } = req.params;
+  db.query('SELECT name, description FROM form_data WHERE id = ?', [id], (err, results) => {
+    if (err) {
+      console.error('Error fetching career details:', err);
+      return res.status(500).send('Internal Server Error');
+    }
+    if (results.length === 0) {
+      return res.status(404).send('Career not found');
+    }
+    res.json(results[0]);
+  });
+});
+
+
 // Get data
 app.get("/api/data", (req, res) => {
   const query = "SELECT * FROM form_data";

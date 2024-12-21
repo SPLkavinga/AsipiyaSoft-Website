@@ -25,6 +25,9 @@ import AddCareers from './Admin/AddCareers';
 import ShowCareer from './Admin/ShowCareer';
 import Admin from './Admin/Admin';
 import CareerNew from './Admin/CareerNew';
+import CareerDetails from './Admin/CareerDetails';
+
+import Landingpage from './Admin/Landingpage';
 
 function App() {
   return (
@@ -52,10 +55,12 @@ function App() {
       <Route path='/ERP' element={<ERP/>}/>
       <Route path="/Blogs" element={<BlogList />} />
     <Route path="/Blog/:slug" element={<BlogPage />} />
+    <Route path="/Landingpage" element={<Landingpage />} />
     <Route path="/Admin" element={<Admin />} />
     <Route path="/AddCareers" element={<AddCareers />} />
     <Route path="/ShowCareer" element={<ShowCareer />} />
     <Route path="/CareerNew" element={<CareerNew />} />
+    <Route path="/career/:id" element={<CareerDetails />} />
     </Routes>
     </BrowserRouter>
   );

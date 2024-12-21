@@ -6,14 +6,15 @@ import NavBar from "./../Components/NabBar";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
+import ApplyForm from './../Components/ApplyForm';
 
 function CareerNew() {
   const [vacancies, setVacancies] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const textVariants = {
-    hidden: { opacity: 0, y: 50 }, // Start off-screen (down)
-    visible: { opacity: 1, y: 0 }, // Move to its final position (up)
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
   };
 
   // Fetch career names from the backend
@@ -48,7 +49,6 @@ function CareerNew() {
   return (
     <>
       <NavBar />
-
       {/* Full-screen background section */}
       <div
         className="relative flex items-center justify-center w-full h-[650px] md:h-screen bg-center bg-cover "
@@ -57,10 +57,7 @@ function CareerNew() {
           backgroundSize: "cover",
         }}
       >
-        {/* Darker overlay */}
         <div className="absolute inset-0 z-0 bg-black bg-opacity-70"></div>
-
-        {/* Text content centered */}
         <div className="z-10 w-full px-6 py-8 text-center md:w-2/3 md:px-20">
           <motion.h2
             className="text-4xl font-bold text-white md:text-5xl"
@@ -71,7 +68,6 @@ function CareerNew() {
           >
             Come and Innovate
           </motion.h2>
-
           <motion.h2
             className="text-4xl font-bold text-white md:text-5xl"
             initial="hidden"
@@ -81,7 +77,6 @@ function CareerNew() {
           >
             with Us
           </motion.h2>
-
           <motion.p
             className="mt-4 text-sm text-white md:text-lg"
             initial="hidden"
@@ -91,8 +86,7 @@ function CareerNew() {
           >
             Be a part of our mission to revolutionize the future through the
             implementation of innovative and intelligent technological
-            solutions. Join us on our quest to create products that have a
-            meaningful impact, shaping a safer and more inclusive tomorrow.
+            solutions.
           </motion.p>
         </div>
       </div>
@@ -106,14 +100,15 @@ function CareerNew() {
           <div className="h-1 max-w-screen-xl mt-1 bg-gray-600"></div>
           <div className="p-6">
             {vacancies.map((vacancy, index) => (
-              <Link to={`/${vacancy.name.replace(/\s+/g, '')}`} key={index} className="block mb-4">
+              <Link
+                to={`/career/${vacancy.id}`}
+                key={index}
+                className="block mb-4"
+              >
                 <div className="flex flex-col items-start p-6 h-full xl:h-[84px] transition-colors border-2 border-[#D9D9D9] rounded-[15px] bg-[#F9F5FF] hover:border-purple-600 md:flex-row md:justify-between md:items-center">
-                  {/* Vacancy Title */}
                   <span className="text-[15px] xl:text-[16px] font-semibold text-[#333333]">
                     {vacancy.name}
                   </span>
-
-                  {/* Buttons */}
                   <div className="flex flex-wrap justify-start gap-2 mt-3 md:mt-0 md:justify-end">
                     <span className="px-5 py-2 text-[13.33px] font-bold border-2 border-[#D9D9D9] text-gray-600 bg-white rounded-full">
                       Full Time
@@ -129,44 +124,7 @@ function CareerNew() {
         </div>
       </div>
 
-      <div className="flex items-center justify-center ">
-        <div className="w-full max-w-4xl p-10 bg-white border border-gray-200 rounded-lg shadow-lg">
-          <h1 className="mb-4 text-3xl font-semibold text-center text-gray-800">
-            Position Not Available?
-          </h1>
-          <p className="pb-4 mb-8 text-center text-gray-600 border-b">
-            Submit your application, and we’ll get back to you!
-          </p>
-          <form className="space-y-6">
-            <div>
-              <label
-                htmlFor="name"
-                className="block mb-1 text-sm font-medium text-gray-700"
-              >
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="w-full px-4 py-3 text-sm border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
-                placeholder="Enter your full name"
-              />
-            </div>
-
-            {/* Other form fields */}
-
-            <div className="flex justify-end">
-              <button
-                type="submit"
-                className="px-6 py-3 text-sm font-semibold text-white bg-purple-600 rounded-full shadow-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
-              >
-                Submit Application
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
+      <ApplyForm />
       <Footer />
     </>
   );
