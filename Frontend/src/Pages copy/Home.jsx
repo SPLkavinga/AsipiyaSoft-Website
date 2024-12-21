@@ -148,61 +148,46 @@ function Home() {
           {/* Text content on the left side */}
           <div className="z-10 w-full px-4 text-center xl:w-1/2 md:pr-8 xl:text-left">
             {/* Add Framer Motion animations to each line of text */}
-            <motion.h2
-              className="text-[30px] xl:text-[47.78px] font-semibold text-white"
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.5, delay: 0.1 }}
-              variants={textVariants}
-            >
-              Empowering Lives
-            </motion.h2>
-            <motion.h2
-              className="text-[30px] xl:text-[47.78px] font-semibold text-white"
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.5, delay: 0.2 }}
-              variants={textVariants}
-            >
-              Globally
-            </motion.h2>
-            <motion.h2
-              className="text-[30px] xl:text-[47.78px] font-semibold text-white"
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.5, delay: 0.3 }}
-              variants={textVariants}
-            >
-              With Trusted Microfinance
-            </motion.h2>
-            <motion.h2
-              className="mb-[8px] text-[30px] xl:text-[47.78px] font-semibold text-white"
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.5, delay: 0.4 }}
-              variants={textVariants}
-            >
-              Solutions.
-            </motion.h2>
-            <motion.p
-              className="md:mb-[32px] mb-[16px] text-[14px] md:text-[19.2px] font-normal text-white"
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.5, delay: 0.5 }}
-              variants={textVariants}
-            >
-              Empowering Businesses with Scalable and Flexible Microfinance
-              Solutions.
-            </motion.p>
             <motion.div
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.5, delay: 0.6 }}
-              variants={textVariants}
+              className="section-container"
+              initial={{ opacity: 0, y: -50 }} // Start off-screen at the top
+              animate={{ opacity: 1, y: 0 }} // Move into place
+              transition={{ duration: 0.5 }} // Animation timing
+            >
+              <h2 className="text-[30px] xl:text-[47.78px] font-semibold text-white">
+                Empowering Lives
+              </h2>
+              <h2 className="text-[30px] xl:text-[47.78px] font-semibold text-white">
+                Globally
+              </h2>
+              <h2 className="text-[30px] xl:text-[47.78px] font-semibold text-white">
+                With Trusted Microfinance
+              </h2>
+              <h2 className="mb-[8px] text-[30px] xl:text-[47.78px] font-semibold text-white">
+                Solutions.
+              </h2>
+            </motion.div>
+
+            <motion.div
+              className="section-container"
+              initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
+              animate={{ opacity: 1, x: 0 }} // Move into place
+              transition={{ duration: 0.5 }} // Animation timing
+            >
+              <motion.p className="md:mb-[32px] mb-[16px] text-[14px] md:text-[19.2px] font-normal text-white">
+                Empowering Businesses with Scalable and Flexible Microfinance
+                Solutions.
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }} // Start off-screen below
+              animate={{ opacity: 1, y: 0 }} // Move into place
+              transition={{ duration: 0.5 }} // Animation timing
               className="flex justify-center w-full xl:justify-start"
             >
               <Link
-                className="w-[150px] h-[45px] xl:w-[250px] xl:h-[50px] py-2 mb-4 text-[16px] xl:text-[19.2px] font-semibold text-white bg-[#7D00C5]  hover:bg-[#5C0091] rounded-full flex items-center justify-center"
+                className="w-[150px] h-[45px] xl:w-[250px] xl:h-[50px] py-2 mb-4 text-[16px] xl:text-[19.2px] font-semibold text-white bg-[#7D00C5] hover:bg-[#5C0091] rounded-full flex items-center justify-center"
                 to="/About"
               >
                 Let's get started
@@ -224,22 +209,29 @@ function Home() {
       </div>
       <br />
 
-      <div className="mx-[20px] xl:mx-[120px] ">
-        <p className="text-[30px] md:text-[39.81px] font-medium text-center mt-[30px] md:mt-[78px]">
-          Our <span className="text-[#7D00C5]"> Services</span>{" "}
-        </p>
-        <p className="mt-[4px] text-center text-slate-500 text-[15px] md:text-[16px]">
-          At Asipiya Soft Solutions, we specialize in designing scalable
-          microfinance solutions that drive your business forward in the digital
-          era.
-        </p>
-        <p className="text-center text-slate-500  text-[15px] md:text-[16px]">
-          Partner with us to unlock innovation, boost efficiency, and achieve
-          sustainable growth.
-        </p>
-        <p className="text-center text-slate-500 mb-[16px]  text-[15px] md:text-[16px]">
-          Let’s shape the future of your enterprise together.
-        </p>
+      <div className="mx-[20px] xl:mx-[120px]">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }} // Start below
+          whileInView={{ opacity: 1, y: 0 }} // Fade in and move up
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <p className="text-[30px] md:text-[39.81px] font-medium text-center mt-[30px] md:mt-[78px]">
+            Our <span className="text-[#7D00C5]"> Services</span>
+          </p>
+          <p className="mt-[4px] text-center text-slate-500 text-[15px] md:text-[16px]">
+            At Asipiya Soft Solutions, we specialize in designing scalable
+            microfinance solutions that drive your business forward in the
+            digital era.
+          </p>
+          <p className="text-center text-slate-500 text-[15px] md:text-[16px]">
+            Partner with us to unlock innovation, boost efficiency, and achieve
+            sustainable growth.
+          </p>
+          <p className="text-center text-slate-500 mb-[16px] text-[15px] md:text-[16px]">
+            Let’s shape the future of your enterprise together.
+          </p>
+        </motion.div>
       </div>
 
       <motion.div
@@ -253,42 +245,60 @@ function Home() {
           {/* Features Grid */}
           <motion.div
             className="grid justify-center grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }} // Start below
+            whileInView={{ opacity: 1, y: 0 }} // Fade in and move up
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             {features.map((feature, index) => (
-              <Link
+              <motion.div
                 key={index}
-                to={feature.path} // Navigate to the feature path on click
-                className="flex items-center p-6 transition rounded-lg hover:bg-purple-50 hover:shadow-sm"
+                whileHover={{
+                  scale: 1,
+                  boxShadow: "0px 10px 15px rgba(0, 0, 0, 0.1)",
+                }} // Scale and shadow on hover
+                transition={{ duration: 0.3 }}
+                className="rounded-xl"
               >
-                {/* Image on the left */}
-                <div className="mr-4">
-                  <img
-                    src={feature.image}
-                    alt={feature.title}
-                    className="w-full h-[150px] object-contain"
-                  />
-                </div>
+                <Link
+                  to={feature.path}
+                  className="flex items-center p-2 transition rounded-xl hover:bg-purple-50 hover:shadow-sm"
+                >
+                  {/* Image on the left */}
+                  <div className="mr-4">
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-[150px] object-contain"
+                    />
+                  </div>
 
-                {/* Title and Description on the right */}
-                <div>
-                  <h3 className="mb-2 text-[23.04px] font-semibold text-gray-800">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-gray-600">{feature.description}</p>
-                </div>
-              </Link>
+                  {/* Title and Description on the right */}
+                  <div>
+                    <h3 className="mb-2 text-[23.04px] font-semibold text-gray-800">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {feature.description}
+                    </p>
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </motion.div>
 
           {/* Button */}
           <div className="mt-12 text-center">
-            <button className="w-[183px] h-[48px] px-6 py-1 text-[16px] font-semibold text-white transition bg-[#7D00C5] hover:bg-[#5C0091] rounded-full">
+            <motion.button
+              whileHover={{
+                scale: 1.1,
+                boxShadow: "0px 8px 15px rgba(125, 0, 197, 0.3)",
+              }} // Scale and shadow on hover
+              whileTap={{ scale: 0.95 }} // Shrink slightly on click
+              className="w-[183px] h-[48px] px-6 py-1 text-[16px] font-semibold text-white transition bg-[#7D00C5] hover:bg-[#5C0091] rounded-full"
+            >
               Learn More
-            </button>
+            </motion.button>
           </div>
         </div>
       </motion.div>
@@ -339,10 +349,20 @@ function Home() {
       {/*ClientCarousel */}
       <ClientCarousel />
 
-      <div className="mx-[20px] md:mx-[20px] lg:mx-[120px] flex flex-col items-center justify-center  xl:flex-row-reverse mt-[40px] md:mt-[80px]">
-        <div className="flex flex-col-reverse items-center justify-center gap-8 p-5 bg-white md:gap-12 xl:flex-row xl:items-start xl:justify-between">
+      <div className="mx-[20px] md:mx-[20px] lg:mx-[120px] flex flex-col items-center justify-center xl:flex-row-reverse mt-[40px] md:mt-[80px]">
+        <motion.div
+          className="flex flex-col-reverse items-center justify-center gap-8 p-5 bg-white md:gap-12 xl:flex-row xl:items-start xl:justify-between"
+          initial="hidden"
+          animate="visible"
+          transition={{ staggerChildren: 0.3 }}
+        >
           {/* Left: Review Card */}
-          <div className="flex justify-center w-full lg:w-[600px]">
+          <motion.div
+            className="flex justify-center w-full lg:w-[600px]"
+            initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
+            animate={{ opacity: 1, x: 0 }} // Move into place
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <div className="p-4 md:p-6 bg-white shadow-lg rounded-lg w-[90%] sm:w-[75%] md:w-[80%] transition-transform duration-300 ease-in-out transform">
               <h3 className="text-base font-semibold sm:text-lg">
                 {reviews[currentReviewIndex].name}
@@ -377,10 +397,15 @@ function Home() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: Title and Description */}
-          <div className="w-full text-center md:w-full lg:w-[575px] xl:text-left">
+          <motion.div
+            className="w-full text-center md:w-full lg:w-[575px] xl:text-left"
+            initial={{ opacity: 0, x: 100 }} // Start off-screen to the right
+            animate={{ opacity: 1, x: 0 }} // Move into place
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          >
             <h2 className="text-[30px] md:text-[39.81px] font-medium">
               <span className="text-[#7D00C5]">Client’s</span> Reviews
             </h2>
@@ -389,8 +414,8 @@ function Home() {
               microfinance solutions that drive growth and success across
               industries worldwide.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Countries Serve Section */}
@@ -441,4 +466,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Home;
