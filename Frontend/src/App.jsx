@@ -26,6 +26,8 @@ import ShowCareer from './Admin/ShowCareer';
 import Admin from './Admin/Admin';
 import CareerNew from './Admin/CareerNew';
 import CareerDetails from './Admin/CareerDetails';
+import ApplicationsPage from './Admin/ApplicationsPage';
+import ContactFormdetails from './Admin/ContactFormdetails';
 
 import Landingpage from './Admin/Landingpage';
 
@@ -61,6 +63,8 @@ function App() {
     <Route path="/ShowCareer" element={<ShowCareer />} />
     <Route path="/CareerNew" element={<CareerNew />} />
     <Route path="/career/:id" element={<CareerDetails />} />
+    <Route path="/ApplicationsPage" element={<ApplicationsPage />} />
+    <Route path="/ContactFormdetails" element={<ContactFormdetails />} />
     </Routes>
     </BrowserRouter>
   );
