@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
 
 function NavBar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const location = useLocation(); // Get the current location
 
   return (
     <div className="bg-white text-black px-4 py-4 h-[90px] flex items-center justify-between">
@@ -15,58 +16,106 @@ function NavBar() {
       {/* Middle Section: Desktop Navigation */}
       <ul className="hidden xl:flex space-x-8 text-[16px] font-medium">
         <li className="relative group">
-          <a
-            href="/"
-            className="hover:text-[#9733D1] transition-colors duration-300"
+          <Link
+            to="/"
+            className={`transition-colors duration-300 ${
+              location.pathname === "/"
+                ? "text-[#9733D1]"
+                : "hover:text-[#9733D1] text-black"
+            }`}
           >
             Home
-          </a>
-          <span className="absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <span
+            className={`absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full ${
+              location.pathname === "/" ? "w-full" : ""
+            }`}
+          ></span>
         </li>
         <li className="relative group">
-          <a
-            href="/about"
-            className="hover:text-[#9733D1] transition-colors duration-300"
+          <Link
+            to="/about"
+            className={`transition-colors duration-300 ${
+              location.pathname === "/about"
+                ? "text-[#9733D1]"
+                : "hover:text-[#9733D1] text-black"
+            }`}
           >
             About us
-          </a>
-          <span className="absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <span
+            className={`absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full ${
+              location.pathname === "/about" ? "w-full" : ""
+            }`}
+          ></span>
         </li>
         <li className="relative group">
-          <a
-            href="/Services"
-            className="hover:text-[#9733D1] transition-colors duration-300"
+          <Link
+            to="/Services"
+            className={`transition-colors duration-300 ${
+              location.pathname === "/Services"
+                ? "text-[#9733D1]"
+                : "hover:text-[#9733D1] text-black"
+            }`}
           >
             Services
-          </a>
-          <span className="absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <span
+            className={`absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full ${
+              location.pathname === "/Services" ? "w-full" : ""
+            }`}
+          ></span>
         </li>
         <li className="relative group">
-          <a
-            href="/Blogs"
-            className="hover:text-[#9733D1] transition-colors duration-300"
+          <Link
+            to="/Blogs"
+            className={`transition-colors duration-300 ${
+              location.pathname === "/Blogs"
+                ? "text-[#9733D1]"
+                : "hover:text-[#9733D1] text-black"
+            }`}
           >
             Blogs
-          </a>
-          <span className="absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <span
+            className={`absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full ${
+              location.pathname === "/Blogs" ? "w-full" : ""
+            }`}
+          ></span>
         </li>
         <li className="relative group">
-          <a
-            href="/vacancie"
-            className="hover:text-[#9733D1] transition-colors duration-300"
+          <Link
+            to="/vacancie"
+            className={`transition-colors duration-300 ${
+              location.pathname === "/vacancie"
+                ? "text-[#9733D1]"
+                : "hover:text-[#9733D1] text-black"
+            }`}
           >
             Careers
-          </a>
-          <span className="absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <span
+            className={`absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full ${
+              location.pathname === "/vacancie" ? "w-full" : ""
+            }`}
+          ></span>
         </li>
         <li className="relative group">
-          <a
-            href="/contact"
-            className="hover:text-[#9733D1] transition-colors duration-300"
+          <Link
+            to="/contact"
+            className={`transition-colors duration-300 ${
+              location.pathname === "/contact"
+                ? "text-[#9733D1]"
+                : "hover:text-[#9733D1] text-black"
+            }`}
           >
             Contact Us
-          </a>
-          <span className="absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <span
+            className={`absolute left-0 bottom-0 h-[3px] rounded-full w-0 bg-[#9733D1] transition-all duration-300 group-hover:w-full ${
+              location.pathname === "/contact" ? "w-full" : ""
+            }`}
+          ></span>
         </li>
       </ul>
 
@@ -79,7 +128,7 @@ function NavBar() {
         </Link>
 
         <Link to="/contact">
-          <button className="bg-white border-[#333333]  hover:bg-[#7D00C5] hover:text-white border-opacity-70 border-2 rounded-full w-[147px] h-[44px] text-[#333333] text-opacity-70 font-semibold">
+          <button className="bg-white border-[#333333] hover:bg-[#7D00C5] hover:text-white border-opacity-70 border-2 rounded-full w-[147px] h-[44px] text-[#333333] text-opacity-70 font-semibold">
             Let's Talk
           </button>
         </Link>
@@ -141,34 +190,76 @@ function NavBar() {
 
         <ul className="space-y-6 p-4 text-[16px] font-medium">
           <li>
-            <a href="/" className="hover:text-[#9733D1]">
+            <Link
+              to="/"
+              className={`block transition-colors duration-300 ${
+                location.pathname === "/"
+                  ? "text-[#9733D1]"
+                  : "hover:text-[#9733D1] text-black"
+              }`}
+            >
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/about" className="hover:text-[#9733D1]">
+            <Link
+              to="/about"
+              className={`block transition-colors duration-300 ${
+                location.pathname === "/about"
+                  ? "text-[#9733D1]"
+                  : "hover:text-[#9733D1] text-black"
+              }`}
+            >
               About us
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/Services" className="hover:text-[#9733D1]">
+            <Link
+              to="/Services"
+              className={`block transition-colors duration-300 ${
+                location.pathname === "/Services"
+                  ? "text-[#9733D1]"
+                  : "hover:text-[#9733D1] text-black"
+              }`}
+            >
               Services
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/Blogs" className="hover:text-[#9733D1]">
+            <Link
+              to="/Blogs"
+              className={`block transition-colors duration-300 ${
+                location.pathname === "/Blogs"
+                  ? "text-[#9733D1]"
+                  : "hover:text-[#9733D1] text-black"
+              }`}
+            >
               Blogs
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/vacancie" className="hover:text-[#9733D1]">
+            <Link
+              to="/vacancie"
+              className={`block transition-colors duration-300 ${
+                location.pathname === "/vacancie"
+                  ? "text-[#9733D1]"
+                  : "hover:text-[#9733D1] text-black"
+              }`}
+            >
               Careers
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/contact" className="hover:text-[#9733D1]">
+            <Link
+              to="/contact"
+              className={`block transition-colors duration-300 ${
+                location.pathname === "/contact"
+                  ? "text-[#9733D1]"
+                  : "hover:text-[#9733D1] text-black"
+              }`}
+            >
               Contact Us
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
