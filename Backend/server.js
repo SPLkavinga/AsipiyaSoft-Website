@@ -19,8 +19,8 @@ app.use(cors());
 const transporter = nodemailer.createTransport({
   service: "gmail", // Replace with your email provider
   auth: {
-    user: "lahiru.20211349@iit.ac.lk", // Replace with your email
-    pass: "sbxz mpde zffe dctg", // Replace with your app-specific password
+    user: "n.chaminducodez@gmail.com", // Replace with your email
+    pass: "ehbc wrmr tuav ceay", // Replace with your app-specific password
   },
 });
 
@@ -42,32 +42,73 @@ db.connect((err) => {
   console.log("Connected to MySQL database");
 });
 
-// Route to handle form submission
 app.post("/send-email", (req, res) => {
-  const { firstName, lastName, email, phoneNumber, message, interests } =
-    req.body;
+  const { firstName, lastName, email, phoneNumber, message, interests } = req.body;
+  
+  console.log('User email:', email);  // Check if the email is being received
 
-  const mailOptions = {
-    from: email,
-    to: "lahiru.20211349@iit.ac.lk",
-    subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-    text: `
-      First Name: ${firstName}
-      Last Name: ${lastName}
-      Email: ${email}
-      Phone Number: ${phoneNumber}
-      Message: ${message}
-      Interested in: ${interests.join(", ")}
-    `,
-  };
+  // Insert the form data into the email_details table
+  const query = `
+    INSERT INTO email_details (firstName, lastName, email, phoneNumber, message, interests)
+    VALUES (?, ?, ?, ?, ?, ?)
+  `;
+  
+  // Convert the interests array into a string (if it is an array)
+  const interestsString = interests.join(", ");
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return res.status(500).send("Error sending email");
+  db.query(query, [firstName, lastName, email, phoneNumber, message, interestsString], (err, result) => {
+    if (err) {
+      console.error('Database error:', err); // Log error if saving to the database fails
+      return res.status(500).send("Error saving data to the database");
     }
-    res.status(200).send("Email sent successfully");
+
+    console.log('Data saved to the database:', result);
+
+    // Send email to both the user and your email
+    const mailOptions = {
+      from: email,
+      to: ["n.chaminducodez@gmail.com", email], // Send to both your email and the user's email
+      subject: `New Contact Form Submission from ${firstName} ${lastName}`,
+      text: `
+        First Name: ${firstName}
+        Last Name: ${lastName}
+        Email: ${email}
+        Phone Number: ${phoneNumber}
+        Message: ${message}
+        Interested in: ${interestsString}
+      `,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error); // Log error if sending fails
+        return res.status(500).send("Error sending email");
+      }
+      console.log('Email sent:', info);  // Log the successful email send
+      res.status(200).send("Email sent successfully and data saved");
+    });
   });
 });
+
+app.get("/get-email-details", (req, res) => {
+  // Query to get all entries from the email_details table
+  const query = "SELECT * FROM email_details";
+  
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Database error:', err); // Log error if fetching fails
+      return res.status(500).send("Error fetching data from the database");
+    }
+
+    console.log('Fetched data from the database:', results);
+
+    // Send the fetched data as a JSON response
+    res.status(200).json(results);
+  });
+});
+
+
+
 
 // API endpoint to fetch career names to the career page
 app.get('/api/careers', (req, res) => {
@@ -176,30 +217,84 @@ app.post("/apply", upload.single("image"), async (req, res) => {
   const file = req.file;
 
   try {
+    // Save the form data into the career_details table
+    const query = `
+      INSERT INTO career_details (name, email, contactNumber, nicNumber, linkedinProfile, position, message, filePath)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    
+    // If there is an uploaded file, save its path; otherwise, save NULL
+    const filePath = file ? file.path : null;
+
+    // Wrapping the db.query in a Promise to allow using await
+    const saveDataToDb = new Promise((resolve, reject) => {
+      db.query(query, [name, email, contactNumber, nicNumber, linkedinProfile, position, message, filePath], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+
+    // Wait for the data to be saved to the database
+    await saveDataToDb;
+
+    console.log('Data saved to the database');
+
     // Configure nodemailer
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "lahiru.20211349@iit.ac.lk", // Replace with your email
-        pass: "sbxz mpde zffe dctg", // Replace with your email password or app password
+        user: "n.chaminducodez@gmail.com", // Replace with your email
+        pass: "ehbc wrmr tuav ceay", // Replace with your email password or app password
       },
     });
 
     const mailOptions = {
-      from: "your-email@gmail.com",
-      to: "lahiru.20211349@iit.ac.lk",
+      from: "n.chaminducodez@gmail.com",  // Your email address
+      to: ["n.chaminducodez@gmail.com", email],  // Send to both your email and the user's email
       subject: `Job Application from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nContact Number: ${contactNumber}\nNIC Number: ${nicNumber}\nLinkedIn Profile: ${linkedinProfile}\nPosition: ${position}\nMessage: ${message}`,
+      text: `
+        Name: ${name}
+        Email: ${email}
+        Contact Number: ${contactNumber}
+        NIC Number: ${nicNumber}
+        LinkedIn Profile: ${linkedinProfile}
+        Position: ${position}
+        Message: ${message}
+      `,
       attachments: file ? [{
         filename: file.originalname,
         path: file.path,
       }] : [],
     };
 
+    // Send the email
     await transporter.sendMail(mailOptions);
+
     res.status(200).send("Application submitted successfully!");
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("Error:", error);
     res.status(500).send("Failed to submit the application.");
   }
 });
+
+app.get("/applications", async (req, res) => {
+  try {
+    const query = "SELECT * FROM career_details";
+    db.query(query, (err, results) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ error: "Database query failed" });
+      } else {
+        res.json(results);
+      }
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+
