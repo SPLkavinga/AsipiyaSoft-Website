@@ -7,7 +7,7 @@ function AddCareers() {
     title: "",
     jobType: "", // Full-time or Part-time
     description: "",
-    bulletPoints: ""
+    bulletPoints: "",
   });
 
   const handleChange = (e) => {
@@ -18,9 +18,17 @@ function AddCareers() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/save", formData);
+      const response = await axios.post(
+        "http://localhost:5000/api/save",
+        formData
+      );
       alert(response.data.message);
-      setFormData({ title: "", jobType: "", description: "", bulletPoints: "" });
+      setFormData({
+        title: "",
+        jobType: "",
+        description: "",
+        bulletPoints: "",
+      });
     } catch (error) {
       console.error(error);
       alert("Failed to save data");
@@ -30,10 +38,10 @@ function AddCareers() {
   return (
     <>
       <AdminNavbar />
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex  bg-gray-100">
         <form
           onSubmit={handleSubmit}
-          className="p-6 space-y-4 bg-white rounded shadow-md w-96"
+          className="p-[45px] space-y-4 bg-white rounded shadow-md w-full"
         >
           <h1 className="text-xl font-bold">Add Career Form</h1>
 
@@ -100,13 +108,14 @@ function AddCareers() {
               required
             ></textarea>
           </div>
-
-          <button
-            type="submit"
-            className="w-full py-2 text-white bg-[#7D00C5] hover:bg-[#5C0091] rounded-full"
-          >
-            Submit
-          </button>
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              className="w-[160px] py-2 text-white bg-[#7D00C5] hover:bg-[#5C0091] rounded-full"
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </>
