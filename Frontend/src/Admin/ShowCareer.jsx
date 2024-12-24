@@ -30,11 +30,9 @@ function ShowCareer() {
   // Open modal for editing
   const openEditModal = (item) => {
     setEditItem(item);
-    setNewName(item.name); // Prepopulate with the existing name
+    setNewName(item.title); // Prepopulate with the existing name
     setNewDescription(item.description); // Prepopulate with the existing description
     setNewJobType(item.job_type); // Prepopulate with the existing job type
-    setNewSalary(item.salary); // Prepopulate with the existing salary
-    setNewLocation(item.location); // Prepopulate with the existing location
   };
 
   // Handle data update
@@ -42,9 +40,7 @@ function ShowCareer() {
     if (
       !newName ||
       !newDescription ||
-      !newJobType ||
-      !newSalary ||
-      !newLocation
+      !newJobType 
     ) {
       alert("All fields are required.");
       return;
@@ -56,8 +52,7 @@ function ShowCareer() {
         name: newName,
         description: newDescription,
         job_type: newJobType,
-        salary: newSalary,
-        location: newLocation,
+
       })
       .then((response) => {
         console.log(response.data); // Optional logging for debugging
@@ -69,8 +64,7 @@ function ShowCareer() {
                   name: newName,
                   description: newDescription,
                   job_type: newJobType,
-                  salary: newSalary,
-                  location: newLocation,
+                
                 }
               : item
           )
@@ -167,7 +161,7 @@ function ShowCareer() {
                 type="text"
                 className="w-full p-2 mb-4 border border-gray-300 rounded"
                 value={newName}
-                onChange={(e) => setNewName(e.target.value)}
+                onChange={(e) => setNewtitle(e.target.value)}
               />
               <label className="block mb-2 text-gray-700">Description:</label>
               <textarea
