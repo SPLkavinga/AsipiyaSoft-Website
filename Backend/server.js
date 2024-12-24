@@ -112,37 +112,52 @@ app.get("/get-email-details", (req, res) => {
 
 // API endpoint to fetch career names to the career page
 app.get('/api/careers', (req, res) => {
-  const query = 'SELECT name FROM form_data';
+  const query = 'SELECT name FROM careers';  // Fetch career names from the careers table
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error fetching careers:', err);
       res.status(500).json({ error: 'Failed to fetch career data' });
     } else {
-      res.json(results);
+      res.json(results); // Send the career names to the frontend
     }
   });
 });
 
+// Route to get career details by title (previously name)
+app.get('/api/career/:title', (req, res) => {
+  const { title } = req.params;  // Get career title from the URL parameter
 
-// Route to get vacancy details by ID for the career page
-app.get('/api/career/:id', (req, res) => {
-  const { id } = req.params;
-  db.query('SELECT name, description FROM form_data WHERE id = ?', [id], (err, results) => {
+  console.log('Received career title:', title);  // Debugging line
+
+  // Use the career title to query the database
+  const query = `
+    SELECT title, job_type, description, bullet_points 
+    FROM careers 
+    WHERE title = ?`; // Updated column name to 'title'
+
+  db.query(query, [title], (err, results) => {
     if (err) {
       console.error('Error fetching career details:', err);
       return res.status(500).send('Internal Server Error');
     }
+
     if (results.length === 0) {
+      console.log('Career not found for title:', title);  // Debugging line
       return res.status(404).send('Career not found');
     }
+
+    // Send the career details back as JSON
     res.json(results[0]);
   });
 });
 
 
-// Get data
+
+
+
+// Get all career data
 app.get("/api/data", (req, res) => {
-  const query = "SELECT * FROM form_data";
+  const query = "SELECT * FROM careers"; // Updated table name
   db.query(query, (err, results) => {
     if (err) {
       console.error(err);
@@ -153,27 +168,32 @@ app.get("/api/data", (req, res) => {
   });
 });
 
-// Delete data
+
+// Delete career data by ID
 app.delete("/api/data/:id", (req, res) => {
   const { id } = req.params;
-  const query = "DELETE FROM form_data WHERE id = ?";
+  const query = "DELETE FROM careers WHERE id = ?"; // Updated table name
   db.query(query, [id], (err) => {
     if (err) {
       console.error(err);
       res.status(500).send("Database error");
       return;
     }
-    res.sendStatus(200);
+    res.sendStatus(200); // Successfully deleted
   });
 });
 
-// Update data by ID (update name and description)
-app.put('/api/updata/:id', (req, res) => {
-  const { name, description } = req.body;
+
+// Update career data by ID (title, job type, description, and bullet points)
+app.put('/api/update/:id', (req, res) => {
+  const { title, jobType, description, bulletPoints } = req.body;
   const { id } = req.params;
 
-  const query = 'UPDATE form_data SET name = ?, description = ? WHERE id = ?'; // Modify with your actual table name
-  db.query(query, [name, description, id], (err, result) => {
+  const query = `
+    UPDATE careers
+    SET title = ?, job_type = ?, description = ?, bullet_points = ?
+    WHERE id = ?`; // Updated with proper column names
+  db.query(query, [title, jobType, description, bulletPoints, id], (err, result) => {
     if (err) {
       console.error('Error updating data:', err);
       return res.status(500).send('Error updating data');
@@ -185,21 +205,28 @@ app.put('/api/updata/:id', (req, res) => {
   });
 });
 
-// Route to save form data to database
+// API route to save career data
 app.post("/api/save", (req, res) => {
-  const { name, description } = req.body;
-  const descriptionPoints = description.split(",").map((point) => point.trim());
+  const { title, jobType, description, bulletPoints } = req.body;
 
-  const query = "INSERT INTO form_data (name, description) VALUES (?, ?)";
-  db.query(query, [name, JSON.stringify(descriptionPoints)], (err, result) => {
+  if (!title || !jobType || !description) {
+    return res.status(400).send({ message: "Title, Job Type, and Description are required." });
+  }
+
+  const query = `
+    INSERT INTO careers (title, job_type, description, bullet_points)
+    VALUES (?, ?, ?, ?)
+  `;
+
+  db.query(query, [title, jobType, description, bulletPoints], (err, results) => {
     if (err) {
-      console.error(err);
-      res.status(500).send({ message: "Failed to save data" });
-      return;
+      console.error("Error inserting data:", err);
+      return res.status(500).send({ message: "Failed to save data" });
     }
-    res.send({ message: "Data saved successfully" });
+    res.status(200).send({ message: "Career added successfully" });
   });
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
