@@ -63,7 +63,7 @@ function AddCareers() {
 
         <button
           type="submit"
-          className="w-full py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+          className="w-full py-2 text-white bg-[#7D00C5] hover:bg-[#5C0091] rounded-full"
         >
           Submit
         </button>

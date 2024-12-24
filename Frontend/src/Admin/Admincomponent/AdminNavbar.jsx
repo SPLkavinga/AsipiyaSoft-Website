@@ -10,7 +10,7 @@ function AdminNavbar() {
 
   return (
     <nav className="bg-[#CFB1D4] shadow-lg z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-2 lg:px-2 py-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo Section */}
           <div className="flex items-center">
@@ -52,10 +52,10 @@ function AdminNavbar() {
           </div>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex md:items-center space-x-4">
+          <div className="hidden md:flex md:items-center space-x-8">
             <Link
               to="/ApplicationsPage"
-              className={`px-3 py-2 text-sm font-medium text-white relative group ${
+              className={`py-2  text-white relative group ${
                 isActive("/ApplicationsPage") ? "text-purple-500" : ""
               }`}
             >
@@ -68,7 +68,7 @@ function AdminNavbar() {
             </Link>
             <Link
               to="/ContactFormdetails"
-              className={`px-3 py-2 text-sm font-medium text-white relative group ${
+              className={` py-2  text-white relative group ${
                 isActive("/ContactFormdetails") ? "text-purple-500" : ""
               }`}
             >
@@ -81,7 +81,7 @@ function AdminNavbar() {
             </Link>
             <Link
               to="/AddCareers"
-              className={`px-3 py-2 text-sm font-medium text-white relative group ${
+              className={`py-2  text-white relative group ${
                 isActive("/AddCareers") ? "text-purple-500" : ""
               }`}
             >
@@ -94,7 +94,7 @@ function AdminNavbar() {
             </Link>
             <Link
               to="/ShowCareer"
-              className={`px-3 py-2 text-sm font-medium text-white relative group ${
+              className={` py-2  text-white relative group ${
                 isActive("/ShowCareer") ? "text-purple-500" : ""
               }`}
             >

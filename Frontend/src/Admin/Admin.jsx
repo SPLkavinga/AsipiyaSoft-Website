@@ -53,7 +53,7 @@ const Admin = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-purple-900 via-purple-400 to-purple-900">
+    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-[#CFB1D4] via-purple-400 to-[#CFB1D4]">
       <div className="w-full max-w-sm p-6 bg-white rounded-md shadow-md">
         {/* Logo Section */}
         <div className="flex justify-center mb-4">
@@ -71,35 +71,35 @@ const Admin = () => {
         {showChangePassword ? (
           <form onSubmit={handleChangePassword}>
             <div className="mb-4">
-              <label className="block mb-2 font-medium text-gray-700">Username</label>
+              <label className="block mb-2 font-medium text-gray-700 text-[14px]">Username</label>
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
               />
             </div>
             <div className="mb-4">
-              <label className="block mb-2 font-medium text-gray-700">Previous Password</label>
+              <label className="block mb-2 font-medium text-gray-700 text-[14px]">Previous Password</label>
               <input
                 type="password"
                 value={enteredOldPassword}
                 onChange={(e) => setEnteredOldPassword(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
               />
             </div>
             <div className="mb-4">
-              <label className="block mb-2 font-medium text-gray-700">New Password</label>
+              <label className="block mb-2 font-medium text-gray-700 text-[14px]">New Password</label>
               <input
                 type="password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
               />
             </div>
             <button
               type="submit"
-              className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+              className="w-full px-4 py-2 text-white bg-[#7D00C5] hover:bg-[#5C0091] rounded-full"
             >
               Save Password
             </button>
@@ -107,27 +107,27 @@ const Admin = () => {
         ) : (
           <form onSubmit={handleLogin}>
             <div className="mb-4">
-              <label className="block mb-2 font-medium text-gray-700">Username</label>
+              <label className="block mb-2 font-medium text-gray-700 text-[14px]">Username</label>
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
               />
             </div>
             <div className="mb-4">
-              <label className="block mb-2 font-medium text-gray-700">Password</label>
+              <label className="block mb-2 font-medium text-gray-700 text-[14px]">Password</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
               />
             </div>
             <div className="flex flex-col items-center">
               <button
                 type="submit"
-                className="px-4 py-2 mb-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+                className="px-20 py-2 mb-2 text-white bg-[#7D00C5] hover:bg-[#5C0091]  rounded-full"
               >
                 Login
               </button>
