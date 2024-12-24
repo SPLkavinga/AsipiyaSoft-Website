@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import AdminNavbar from "./Admincomponent/AdminNavbar";
 
 function ShowCareer() {
   const [data, setData] = useState([]);
@@ -60,6 +61,8 @@ function ShowCareer() {
   };
 
   return (
+    <>
+    <AdminNavbar/>
     <div className="container p-4 mx-auto">
       <h1 className="mb-4 text-2xl font-bold">Data Table</h1>
       <table className="min-w-full border border-collapse border-gray-300 table-auto">
@@ -139,6 +142,7 @@ function ShowCareer() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

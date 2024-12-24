@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import AdminNavbar from "./Admincomponent/AdminNavbar";
 
 function AddCareers() {
     const [formData, setFormData] = useState({ name: "", description: "" });
@@ -22,6 +23,7 @@ function AddCareers() {
   };
   return (
     <>
+    <AdminNavbar/>
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <form
         onSubmit={handleSubmit}

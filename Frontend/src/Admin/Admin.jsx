@@ -29,7 +29,7 @@ const Admin = () => {
     console.log(`Attempting login with username: ${username} and password: ${password}`);
     if (username === hardcodedUsername && password === currentPassword) {
       console.log('Login successful');
-      navigate('/Landingpage'); // Navigate to Landing page
+      navigate('/ApplicationsPage'); // Navigate to Landing page
     } else {
       console.log('Login failed: Invalid username or password');
       alert('Invalid username or password!');

@@ -102,7 +102,7 @@ app.get("/get-email-details", (req, res) => {
 
     console.log('Fetched data from the database:', results);
 
-    // Send the fetched data as a JSON response
+    // Send the fetched data as a JSON response 
     res.status(200).json(results);
   });
 });
