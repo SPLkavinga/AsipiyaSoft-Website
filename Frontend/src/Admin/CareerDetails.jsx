@@ -77,11 +77,17 @@ function CareerDetails() {
       </div>
 
       {/* Career Details Section */}
-      <div className="flex items-center justify-center min-h-screen px-4 py-10 md:p-20">
+      <div className="flex items-center justify-center min-h-screen px-8 py-10 md:p-20">
         <div className="w-full max-w-[1200px]">
           {/* Job Type Badge */}
           <div className="mb-4 w-full">
-            <span className="block mt-4 text-sm text-black md:text-[16px] break-words whitespace-pre-wrap">
+            <span className="block mt-4 text-lg text-black  md:text-[28px] font-semibold break-words whitespace-pre-wrap">
+              {careerDetails.shortTitle}
+            </span>
+            <span className="block mt-2 text-sm text-black md:text-[16px] font-semibold break-words whitespace-pre-wrap">
+              {careerDetails.shortdis}
+            </span>
+            <span className="block  text-sm text-black md:text-[16px] break-words whitespace-pre-wrap mb-10">
               {careerDetails.description}
             </span>
           </div>

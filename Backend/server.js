@@ -131,7 +131,7 @@ app.get('/api/career/:title', (req, res) => {
 
   // Use the career title to query the database
   const query = `
-    SELECT title, job_type, description, bullet_points 
+    SELECT title, job_type, description, bullet_points ,shortdis,shortTitle
     FROM careers 
     WHERE title = ?`; // Updated column name to 'title'
 
@@ -186,14 +186,14 @@ app.delete("/api/data/:id", (req, res) => {
 
 // Update career data by ID (title, job type, description, and bullet points)
 app.put('/api/update/:id', (req, res) => {
-  const { title, jobType, description, bulletPoints } = req.body;
+  const { title, jobType, description, bulletPoints ,shortdis,shortTitle } = req.body;
   const { id } = req.params;
 
   const query = `
     UPDATE careers
-    SET title = ?, job_type = ?, description = ?, bullet_points = ?
+    SET title = ?, job_type = ?, description = ?, bullet_points = ? , shortdis = ?, shortTitle = ?
     WHERE id = ?`; // Updated with proper column names
-  db.query(query, [title, jobType, description, bulletPoints, id], (err, result) => {
+  db.query(query, [title, jobType, description, bulletPoints,shortdis,shortTitle, id], (err, result) => {
     if (err) {
       console.error('Error updating data:', err);
       return res.status(500).send('Error updating data');
@@ -207,18 +207,18 @@ app.put('/api/update/:id', (req, res) => {
 
 // API route to save career data
 app.post("/api/save", (req, res) => {
-  const { title, jobType, description, bulletPoints } = req.body;
+  const { title, jobType, description, bulletPoints,shortdis,shortTitle } = req.body;
 
   if (!title || !jobType || !description) {
     return res.status(400).send({ message: "Title, Job Type, and Description are required." });
   }
 
   const query = `
-    INSERT INTO careers (title, job_type, description, bullet_points)
-    VALUES (?, ?, ?, ?)
+    INSERT INTO careers (title, job_type, description, bullet_points,shortdis,shortTitle)
+    VALUES (?, ?, ?, ?, ?, ?)
   `;
 
-  db.query(query, [title, jobType, description, bulletPoints], (err, results) => {
+  db.query(query, [title, jobType, description, bulletPoints, shortdis,shortTitle], (err, results) => {
     if (err) {
       console.error("Error inserting data:", err);
       return res.status(500).send({ message: "Failed to save data" });
